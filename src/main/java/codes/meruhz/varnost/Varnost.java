@@ -1,30 +1,19 @@
 package codes.meruhz.varnost;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import codes.meruhz.varnost.api.VarnostPlugin;
 import org.jetbrains.annotations.NotNull;
 
-public final class Varnost extends JavaPlugin {
+import java.util.concurrent.CompletableFuture;
+
+public final class Varnost extends VarnostPlugin {
 
     @Override
-    public void onLoad() {
-        super.onLoad();
-    }
-
-    @Override
-    public void onDisable() {
-        super.onDisable();
+    protected @NotNull CompletableFuture<Void> start() {
+        return null;
     }
 
     @Override
-    public void onEnable() {
-        super.onEnable();
-    }
-
-    public static @NotNull Varnost varnost() {
-        return Varnost.getPlugin(Varnost.class);
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    protected @NotNull CompletableFuture<Void> stop() {
+        return null;
     }
 }

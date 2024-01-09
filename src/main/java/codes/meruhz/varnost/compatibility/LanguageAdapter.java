@@ -1,9 +1,13 @@
 package codes.meruhz.varnost.compatibility;
 
 import net.md_5.bungee.api.chat.BaseComponent;
+import org.jetbrains.annotations.Blocking;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 public abstract class LanguageAdapter<T> {
 
@@ -24,6 +28,9 @@ public abstract class LanguageAdapter<T> {
     public abstract @NotNull String getLegacyText(@NotNull Locale locale, @NotNull String id, @NotNull Object... replaces);
 
     public abstract @NotNull List<@NotNull String> getLegacyArray(@NotNull Locale locale, @NotNull String id, @NotNull Object... replaces);
+
+    @Blocking
+    public abstract @NotNull CompletableFuture<Void> load();
 
     @Override
     public boolean equals(Object o) {

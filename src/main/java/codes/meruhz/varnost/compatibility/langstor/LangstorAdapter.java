@@ -1,6 +1,5 @@
 package codes.meruhz.varnost.compatibility.langstor;
 
-import codes.meruhz.langstor.api.Message;
 import codes.meruhz.langstor.md5.chat.ComponentMessage;
 import codes.meruhz.langstor.md5.chat.ComponentStorage;
 import codes.meruhz.varnost.compatibility.LanguageAdapter;
@@ -10,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 public class LangstorAdapter extends LanguageAdapter<ComponentStorage> {
 
@@ -35,6 +35,24 @@ public class LangstorAdapter extends LanguageAdapter<ComponentStorage> {
     @Override
     public @NotNull List<@NotNull String> getLegacyArray(@NotNull Locale locale, @NotNull String id, @NotNull Object... replaces) {
         return ((ComponentStorage) this.getMessage(id).getStorage()).getLegacyArray(id, locale, replaces);
+    }
+
+    @Override
+    public @NotNull CompletableFuture<Void> load() {
+        @NotNull CompletableFuture<Void> completableFuture = new CompletableFuture<>();
+
+        CompletableFuture.runAsync(() -> {
+
+            try {
+
+                completableFuture.complete(null);
+
+            } catch (Exception e) {
+                completableFuture.completeExceptionally(e);
+            }
+        });
+
+        return completableFuture;
     }
 
     public @NotNull ComponentMessage getMessage(@NotNull String id) {
