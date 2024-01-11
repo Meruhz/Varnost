@@ -99,7 +99,7 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- LaivyData MySQL Api -->
+        <!-- LaivyData MySQL API -->
         <dependency>
             <groupId>codes.laivy.data</groupId>
             <artifactId>mysql</artifactId>
@@ -115,7 +115,7 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Langstor BaseComponent -->
+        <!-- Langstor Component API -->
         <dependency>
             <groupId>codes.meruhz.langstor.md5.chat</groupId>
             <artifactId>component</artifactId>

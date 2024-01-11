@@ -2,10 +2,15 @@ package codes.meruhz.varnost.compatibility.langstor;
 
 import codes.meruhz.langstor.md5.chat.ComponentMessage;
 import codes.meruhz.langstor.md5.chat.ComponentStorage;
+import codes.meruhz.langstor.md5.chat.ComponentSerializer;
 import codes.meruhz.varnost.compatibility.LanguageAdapter;
+import codes.meruhz.varnost.utils.FileUtils;
+import com.google.gson.JsonParser;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
@@ -44,6 +49,10 @@ public class LangstorAdapter extends LanguageAdapter<ComponentStorage> {
         CompletableFuture.runAsync(() -> {
 
             try {
+
+                for(InputStream inputStream : FileUtils.getAllInputStreamsFromResources("language")) {
+                    super.getStorages().add((ComponentStorage) new ComponentSerializer().deserialize(new JsonParser().parse(new InputStreamReader(inputStream))));
+                }
 
                 completableFuture.complete(null);
 

@@ -1,0 +1,7 @@
+name: Varnost
+version: ${project.version}
+main: codes.meruhz.varnost.Varnost
+
+website: github.com/Meruhz/Varnost
+author: github.com/Meruhz
+api-version: 1.13
